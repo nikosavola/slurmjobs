@@ -85,7 +85,7 @@ Parameter Expansion
 '''
 NOTHING = object()
 
-def expand_grid(params, ignore=NOTHING):
+def expand_grid(params):
     '''
     e.g.
     params = [
@@ -108,7 +108,7 @@ def _iter_expand_grid(params):
     if isinstance(params, (list, tuple)):
         params, param_literals = split_cond(lambda x: isinstance(x, dict), params, [False, True])
         yield from param_literals
-    
+
     param_names, param_grid = tuple(zip(*(
         params.items() if isinstance(params, dict) else params))) or ([], [])
 

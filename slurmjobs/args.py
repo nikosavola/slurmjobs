@@ -70,9 +70,10 @@ class Argument(util.Factory):
         return flat_join(args + list(kw.values()))
 
     def format_arg(self, k, v=NoArgVal):
-        return self.format_value(k) if v is NoArgVal else self.format_value(v)
+        return Argument.format_value(k) if v is NoArgVal else Argument.format_value(v)
 
-    def format_value(self, v):
+    @staticmethod
+    def format_value(v):
         return util.shlex_repr(v)
 
 
